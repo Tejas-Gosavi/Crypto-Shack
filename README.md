@@ -14,7 +14,7 @@ open 4 command prompts, traverse to project directory and run following commands
 * In 4th - redis-server <br/>
 
 ### Built with
-* Frontend - Bootstrap5, JQuery, Vue.js
+* Frontend - Bootstrap5, jQuery, Vue.js
 * Backend - Django
     * Websockets - Django Channels
     * Background Tasks - Celery, Celery-beat
