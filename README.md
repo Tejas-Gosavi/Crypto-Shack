@@ -2,6 +2,9 @@
 CryptoShack - Live crypto currency tracker web app.
 After some specific regular interval, clienside data will be updated.
 Used Coin Gecko api to get realtime data.
+Added search field to search by name and symbol.
+Added light/dark theme.
+More features coming soon.
 
 ### Built with
 * Fronted - HTML, CSS, Javascript, Bootstrap5, Vue.js.
