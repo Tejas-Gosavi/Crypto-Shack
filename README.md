@@ -1,23 +1,23 @@
 ### About Project 
 CryptoShack - Live crypto currency tracker web app.
-After some specific regular interval, clienside data will be updated. <br/>
+After some specific regular interval, clientside will be updated. <br/>
 Used Coin Gecko api to get realtime data.<br/>
 Added search field to search by name and symbol.<br/>
 Added light/dark theme.<br/>
 More features coming soon.<br/>
 
 ### Run project in your system
-open 4 command prompts, traverse to project dir. and run following commands respectively. <br/>
+open 4 command prompts, traverse to project directory and run following commands respectively. <br/>
 * In 1st - py manage.py runserver <br/>
 * In 2nd - celery -A crypto beat -l INFO <br/>
 * In 3rd - celery -A crypto worker -l INFO <br/>
 * In 4th - redis-server <br/>
 
 ### Built with
-* Fronted - HTML, CSS, Javascript, Bootstrap5, Vue.js.
+* Frontend - Bootstrap5, JQuery, Vue.js
 * Backend - Django
     * Websockets - Django Channels
-    * Background Tasks - Celery
+    * Background Tasks - Celery, Celery-beat
     * Task queue - Redis
 * Database - SQLite
 
