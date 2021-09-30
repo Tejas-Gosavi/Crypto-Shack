@@ -10,3 +10,19 @@ Used Coin Gecko api to get realtime data.
     * Background Tasks - Celery
     * Task queue - Redis
 * Database - SQLite
+
+### Project images
+![ ](https://github.com/Tejas-Gosavi/CryptoShack/blob/master/Screenshot-1.png)
+<hr />
+
+![ ](https://github.com/Tejas-Gosavi/CryptoShack/blob/master/Screenshot-2.png)
+<hr />
+
+![ ](https://github.com/Tejas-Gosavi/CryptoShack/blob/master/Screenshot-3.png)
+<hr />
+
+![ ](https://github.com/Tejas-Gosavi/CryptoShack/blob/master/Screenshot-4.png)
+<hr />
+
+![ ](https://github.com/Tejas-Gosavi/CryptoShack/blob/master/Screenshot-5.png)
+<hr />
