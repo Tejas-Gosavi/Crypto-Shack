@@ -1,0 +1,14 @@
+from channels.generic.websocket import AsyncWebsocketConsumer
+import json
+
+class CoinsComsumers(AsyncWebsocketConsumer):
+    async def connect(self):
+        await self.channel_layer.group_add('coins', self.channel_name)
+        await self.accept()
+
+    async def disconnect(self, code):
+        await self.channel_layer.group_discard('coins', self.channel_name)
+
+    async def send_new_data(self, event):
+        coins = event['text']
+        await self.send(json.dumps(coins))

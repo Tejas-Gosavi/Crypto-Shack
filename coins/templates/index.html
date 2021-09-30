@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="shortcut icon" href="https://img.icons8.com/external-becris-lineal-color-becris/64/000000/external-cryptocurrency-cryptocurrency-blockchain-becris-lineal-color-becris-1.png" type="image/x-icon">
+    <title>Crypto Shack</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1 col-1"></div>
+            <div class="col-sm-8 col-7 mt-3">
+                <h1 class="mb-3 heading" id="heading">Crypto Shack</h1>
+            </div>
+            <div class="col-sm-1 col-1 mt-3 mx-auto">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="mode">
+                    <i class="bi bi-sun-fill text-dark" id="theme"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col-4"></div>
+            <div class="col-md-3 col-6 mx-auto">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search currency" id="search-box">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 mx-auto mt-3">
+                <div id="app">
+                    <div class="table-responsive">
+                        <table class="table table-light table-hover" id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" id="rank">Rank</th>
+                                    <th scope="col">Symbol</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price (&#8377;)</th>
+                                    <th scope="col">24h %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="coin in coins" :key="coin.id">
+                                    <td class="align-middle" >[[ coin.rank ]]</td>
+                                    <td class="align-middle" id="symbol">[[ coin.symbol ]]</td>
+                                    <td class="align-middle" id="name">
+                                        <img :src="coin.image" alt="" width="25">
+                                        [[ coin.name ]]
+                                    </td>
+                                    <td class="align-middle text-bold" :class="{'rise': coin.current_price_state === 'rise', 'fall': coin.current_price_state === 'fall'}">[[ coin.price ]]</td>
+                                    <td class="align-middle text-bold" :class="{'rise': coin.price_change_percentage_24h_state === 'rise', 'fall': coin.price_change_percentage_24h_state === 'fall'}">[[ coin.price_change_percentage_24h ]]%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center">
+        <a href="https://icons8.com/icon/dUU8yIXKuSxW/cryptocurrency">Cryptocurrency icon by Icons8</a>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script>
+        $(document).ready(function () {
+            const app = Vue.createApp({
+            delimiters: ["[[", "]]"],
+            data() {
+                return {
+                    coins: null,
+                }
+            },
+            created() {
+                socket = new WebSocket('ws://localhost:8000');
+                let _this = this;
+
+                socket.onmessage = function(event) {
+                    _this.coins = JSON.parse(event.data);
+                }
+            },
+
+            });
+            app.mount('#app');
+        });
+    </script>
+
+</body>
+</html>
