@@ -6,6 +6,13 @@ Added search field to search by name and symbol.
 Added light/dark theme.
 More features coming soon.
 
+### Run project in your system
+open 4 command prompts, traverse to project dir. and run following commands respectively.
+In 1st - py manage.py runserver
+In 2nd - celery -A crypto beat -l INFO
+In 3rd - celery -A crypto worker -l INFO
+In 4th - redis-server
+
 ### Built with
 * Fronted - HTML, CSS, Javascript, Bootstrap5, Vue.js.
 * Backend - Django
